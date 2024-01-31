@@ -1,0 +1,14 @@
+r0 = 18
+r1 = 16
+r2 = 14
+r3 = 3000
+fill mem21, mem16, mem9
+1) sum 2 registers into mem21
+2) copy mem16 on r2
+3) reach 0 on r2
+4) copy mem9 on r2
+5) substr 2 registers into mem10
+6) copy mem10 on r0
+7) r0 || r3 into mem0
+8) mem0 into r1
+9) r1 && r3 into mem1

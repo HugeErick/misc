@@ -1,14 +1,35 @@
 r0 = 18
 r1 = 16
 r2 = 14
-r3 = 3000
-fill mem21, mem16, mem9
-1) sum 2 registers into mem21
-2) copy mem16 on r2
-3) reach 0 on r2
-4) copy mem9 on r2
-5) substr 2 registers into mem10
-6) copy mem10 on r0
-7) r0 || r3 into mem0
-8) mem0 into r1
-9) r1 && r3 into mem1
+r3 = 300
+mem0=-1, mem1=-2, mem2=-3 mem3=-4 
+A B ALU Switch C mem
+#sending val of @-00004
+00,00,00,1010,11,00000
+#summing operandos r0 r1 @00001
+00,01,00,0101,xx,00001
+#or operandos r1 r2 @r2
+01,10,01,1001,01,00000
+#and operandos r2 r3 @00010
+10,11,10,0101,xx,00010
+#substraction operandos r3 r0 @00011
+11,00,11,0101,xx,00011
+
+ASS (transport mem fills to 10+)
+always reset pc
+a.ass = trivial cases
+load r0 10
+add r1 r0 r1
+store 15 r1
+or r2 r1 r3
+and r3 r2 r3
+store 16 r3
+sub r1 r3 r0 
+store 17 r1
+halt
+b.ass = abs
+c.ass = sort einmal 
+
+
+
+

@@ -15,6 +15,7 @@ A B ALU Switch C mem
 #substraction operandos r3 r0 @00011
 11,00,11,0101,xx,00011
 
+#URL current: http://users.dickinson.edu/~braught/kands/KandS2/machine.html
 ASS (transport mem fills to 10+)
 always reset pc
 a.ass = trivial cases
@@ -27,8 +28,24 @@ store 16 r3
 sub r1 r3 r0 
 store 17 r1
 halt
+
 b.ass = abs
-c.ass = sort einmal 
+sub r3 r1 r2
+bneg 4
+store 18 r3
+branch 6
+sub r0 r2 r1
+store 18 r0
+halt
+
+c.ass = sort einmal from small to greater 
+load r1 20
+load r2 21
+sub r3 r1 r2
+bneg 6
+store 21 r1 
+store 20 r2 
+halt
 
 
 

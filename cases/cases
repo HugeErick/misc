@@ -4,8 +4,8 @@ r2 = 14
 r3 = 300
 mem0=-1, mem1=-2, mem2=-3 mem3=-4 
 A B ALU Switch C mem
-#sending val of @-00004
-00,00,00,1010,11,00000
+#sending val of @00004 to r3
+00,00,00,1010,11,00100
 #summing operandos r0 r1 @00001
 00,01,00,0101,xx,00001
 #or operandos r1 r2 @r2
@@ -15,9 +15,12 @@ A B ALU Switch C mem
 #substraction operandos r3 r0 @00011
 11,00,11,0101,xx,00011
 
+from left to right the switches
+
 #URL current: http://users.dickinson.edu/~braught/kands/KandS2/machine.html
 ASS (transport mem fills to 10+)
 always reset pc
+
 a.ass = trivial cases
 load r0 10
 add r1 r0 r1

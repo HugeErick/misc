@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <regex.h>
+#include "../hdr/microinstruction.h"
 
 #define INSTRUCTIONSIZE 23
 #define longestToken 6
@@ -9,14 +7,6 @@ void printArr (char arr[]) {
 	printf("\n");
 	for (int i = 0; arr[i] != '\0'; i++) {
 		printf("%c", arr[i]);
-	}
-	printf("\n");
-}
-
-void printNumArr (int arr[]) {
-	printf("\n");
-	for (int i = 0; arr[i] != '\0'; i++) {
-		printf("%d ", arr[i]);
 	}
 	printf("\n");
 }
@@ -37,7 +27,7 @@ void checkingFormat(char input[]) {
 	returnInt = regexec(&regex, input, 0, NULL, 0);
 
 	if (returnInt == 0) {
-		printf("\nok\n");
+		printf("ok\n");
 	} else {
 		printf("\nno ok\n");
 		exit(1);
@@ -82,7 +72,6 @@ char* handleInput(char input[]) {
 
 int binaryToDecimal(int binaryNum) {
 	int deciNum = 0, base = 1, remainder;
-
 	while (binaryNum > 0) {
 		remainder = binaryNum % 10;	
 		deciNum += remainder * base;
@@ -93,38 +82,47 @@ int binaryToDecimal(int binaryNum) {
 	return deciNum;
 }
 
-void tokenization(char arr[], int vals[]) {
-	int index = 0, litVal = 0;
+int* tokenization(char arr[]) {
+	int index = 0, litVal = 0, tokenIndex = 0;
+	int* vals = (int*)malloc(6 * sizeof(int));
 	char tempToken[longestToken] = {0}; 
 	for(int i = 0; arr[i] != '\0'; i++) {
 		if (arr[i] == ' ') {
+			printArr(tempToken);
 			litVal = atoi(tempToken);
-			printf("\nvalue:%d i:%d\n", litVal, index);
 			vals[index] = binaryToDecimal(litVal);
-			tempToken[0] = '\0';
+			memset(tempToken, 0, longestToken);
+			tokenIndex = 0;
 			index++;	
+		} else {
+			tempToken[tokenIndex] = arr[i];
+			tokenIndex++;
 		}
-		tempToken[i % longestToken] = arr[i];
 	}
+	printArr(tempToken);
 	litVal = atoi(tempToken);
-	printf("\nvalue:%d i:%d\n", litVal, index);
 	vals[index] = binaryToDecimal(litVal);
+
+	return vals;
 }
 
-int main() {
+int* interpretation() {
 	char instruction[INSTRUCTIONSIZE] = {0};
-	int values[6] = {9};
 
-	printf("enter line\n");
+	printf("enter line\nsuggested format\nxx xx xx xxxx xx xxxxx\n");
 	fgets(instruction, INSTRUCTIONSIZE, stdin);
 
 	char* Handleinstruction = handleInput(instruction);
 
 	checkingFormat(Handleinstruction);
 
-	tokenization(Handleinstruction, values);
+	int* values = tokenization(Handleinstruction);
 
-	printNumArr(values);
+	printf("\ndecimal interpretation\n");
+	for (int i = 0; i < longestToken; i++) {
+		printf("%d\t", values[i]);
+	}
+	printf("\n");
 
-	return 0;
+	return values;
 }

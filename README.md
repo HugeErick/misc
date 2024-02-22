@@ -1,1 +1,1 @@
-# Miscellaneous stuff 
+# microinstruction interpretator and simulator in C

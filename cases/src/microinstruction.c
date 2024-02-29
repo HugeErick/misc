@@ -88,7 +88,6 @@ int* tokenization(char arr[]) {
 	char tempToken[longestToken] = {0}; 
 	for(int i = 0; arr[i] != '\0'; i++) {
 		if (arr[i] == ' ') {
-			printArr(tempToken);
 			litVal = atoi(tempToken);
 			vals[index] = binaryToDecimal(litVal);
 			memset(tempToken, 0, longestToken);
@@ -99,7 +98,6 @@ int* tokenization(char arr[]) {
 			tokenIndex++;
 		}
 	}
-	printArr(tempToken);
 	litVal = atoi(tempToken);
 	vals[index] = binaryToDecimal(litVal);
 
@@ -118,7 +116,7 @@ int* interpretation() {
 
 	int* values = tokenization(Handleinstruction);
 
-	printf("\ndecimal interpretation\n");
+	printf("decimal interpretation\n");
 	for (int i = 0; i < longestToken; i++) {
 		printf("%d\t", values[i]);
 	}

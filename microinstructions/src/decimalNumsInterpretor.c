@@ -51,15 +51,15 @@ void savingOpAnsInMem(int zContent, int memIndex, int* mMemory) {
 	mMemory[memIndex] =zContent;
 }
 
-void decimalNumsInterpretor(int* registers) {
+void decimalNumsInterpretor(int* registers, int* ourMemory) {
 	//asking and getting microinstruction
 	int* decimalVals = interpretation();
 	int operand1 = 0, operand2 = 0, z = 0;
 	char operation;
 	char* switchesInterpretration;
 	int memIndex = decimalVals[5], cAddress = decimalVals[4];
-	int mMemory[7] = {0,24,10,11,-5,7,8};
 	int* fourRegisters = registers;
+	int *mMemory = ourMemory;
 	
 	printf("before operation\n");
 	checkEverything(mMemory,fourRegisters);

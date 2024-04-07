@@ -34,11 +34,12 @@ int ask(int task) {
 }
 
 int main() {
+	int theMemory[6] = {-1, -2, -3, -4, -10}; 
 	int task = 1;
 	task = ask(task);
 	int* setUpRegs = askRegs();
 	while (task) {
-		decimalNumsInterpretor(setUpRegs);
+		decimalNumsInterpretor(setUpRegs, theMemory);
 		flushConsoleBuffer();
 		task = ask(task);
 		flushConsoleBuffer();

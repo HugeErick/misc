@@ -1,14 +1,14 @@
 r0 = 18
 r1 = 16
 r2 = 14
-r3 = 300
-mem0=-1, mem1=-2, mem2=-3 mem3=-4 
+r3 = 30
+mem0=-1, mem1=-2, mem2=-3 mem3=-4, mem4=-10 
 A B ALU Switch C mem
 #sending val of @00004 to r3
 00,00,00,1010,11,00100
 #summing operandos r0 r1 @00001
 00,01,00,0101,xx,00001
-#or operandos r1 r2 @r2
+#or operandos r1 r2 @r1
 01,10,01,1001,01,00000
 #and operandos r2 r3 @00010
 10,11,10,0101,xx,00010

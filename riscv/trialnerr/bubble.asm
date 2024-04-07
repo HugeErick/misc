@@ -1,8 +1,12 @@
     .data
-numbers: .word 4, 3, 6, 7  # The numbers to be sorted
+Lab: 
+	.asciz "erick practica 5\n"
+numbers:
+    .word 4, 3, 6  # The numbers to be sorted
+    
     .text
-    .globl main
 main:
+    la t3, Lab #print name
     la a0, numbers  # Load the address of the numbers
     li a1, 4  # The number of elements in the array
     jal ra, bubble_sort  # Call the bubble sort function

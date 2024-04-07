@@ -1,13 +1,10 @@
 .data
-    input_var:  .word 5        # Variable to store input value
+    input_var:  .word 24        # Variable to store input value
     result:     .word 0       # Variable to store the result
-
+    lab: .asciz "erick practica 6\n"
 .text
-.globl _start
-
 _start:
-
-    # Load the input value into register a0
+    # Load word, ra0 input_var variable
     lw a0, input_var
 
     # Calculate the quadratic and store the result in a1
@@ -15,6 +12,7 @@ _start:
 
     # Store the result in the result variable
     la t0, result
+    # saving word
     sw a1, 0(t0)
 
     # Exit the program
